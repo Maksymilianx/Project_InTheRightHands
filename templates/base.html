@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="../static/css/style.css" />
   </head>
   <body>
+  {% block header %}
     <header class="header--main-page">
       <nav class="container container--70">
       {% if user.is_authenticated %}
-        <ul class="nav--actions">
           <li class="logged-user">
             Witaj Agata
             <ul class="dropdown">
@@ -21,7 +21,8 @@
               <li><a href="#">Wyloguj</a></li>
             </ul>
           </li>
-          {% else %}
+        {% else %}
+        <ul class="nav--actions">
           <li><a href="{% url 'login' %}" class="btn btn--small btn--without-border">Zaloguj</a></li>
           <li><a href="{% url 'register' %}" class="btn btn--small btn--highlighted">Załóż konto</a></li>
         </ul>
@@ -35,6 +36,7 @@
           <li><a href="#contact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
       </nav>
+  {% endblock header %}
 {% block content %}
       <div class="slogan container container--90">
         <div class="slogan--item">
